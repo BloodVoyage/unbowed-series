@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbowed Wiki by BloodVoyage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 260px;
+            background-color: #f6f8fa;
+            border-right: 1px solid #e1e4e8;
+            padding: 24px 16px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+        .sidebar .logo-container {
+            margin-bottom: 20px;
+        }
+        .sidebar .logo-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .sidebar .section-title {
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6a737d;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar li {
+            margin-bottom: 4px;
+        }
+        .sidebar a {
+            color: #24292e;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background-color 0.15s ease;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #e1e4e8;
+            font-weight: 600;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: 260px;
+            padding: 40px 60px;
+            max-width: 960px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 32px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 6px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #24292e;
+        }
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            line-height: 1.6;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #e1e4e8;
+            margin: 28px 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 85%;
+        }
+
+        /* --- PACKAGE CARDS (GRANULAR GRAY BOXES) --- */
+        .package-card {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .package-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .package-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- BADGES & STATUS --- */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+        .badge-released {
+            background-color: #dafbe1;
+            color: #1a7f37;
+        }
+        .badge-soon {
+            background-color: #fff8c5;
+            color: #9a6700;
+        }
+
+        /* --- CALLOUT BOXES --- */
+        .callout {
+            padding: 14px 18px;
+            border-left: 4px solid;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .callout-info {
+            background-color: #f0f4f8;
+            border-color: #3b82f6;
+            color: #1e293b;
+        }
+        .callout-info a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .callout-info a:hover {
+            color: #1d4ed8;
+        }
+        .callout-warning {
+            background-color: #fff8c5;
+            border-color: #d4a72c;
+            color: #7d4e00;
+        }
+        .callout-danger {
+            background-color: #ffebe9;
+            border-color: #ff8182;
+            color: #cf222e;
+        }
+        .callout p {
+            margin-bottom: 0;
+            color: inherit;
+        }
+
+        /* --- TABLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px 12px;
+            border: 1px solid #e1e4e8;
+            text-align: left;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        /* --- RESPONSIVE FOR MOBILE --- */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e1e4e8;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA LATERAL -->
+    <nav class="sidebar">
+        <div class="logo-container">
+            <img src="BloodVoyage__unbowed__logo_small_000.png" alt="Unbowed Wiki">
+        </div>
+        
+        <div class="section-title">General</div>
+        <ul>
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#requirements">Core Requirements</a></li>
+            <li><a href="#installation">Installation Guide</a></li>
+        </ul>
+
+        <div class="section-title">Archetype Catalog</div>
+        <ul>
+            <li><a href="#catalog">Catalog Table</a></li>
+            <li><a href="#dunmer">Unbowed I: Dunmer</a></li>
+        </ul>
+
+        <div class="section-title">Legal & Engineering</div>
+        <ul>
+            <li><a href="#transparency">AI & Transparency</a></li>
+            <li><a href="#usage-copyright">Usage & Copyright</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <h1 id="overview">Unbowed Wiki</h1>
+        <p>Welcome to the official documentation and distribution catalog for the <strong>Unbowed Series</strong> dialogue overhauls for Skyrim Special Edition.</p>
+
+        <p>Each archetype module exhaustively overhauls <strong>9,024 player dialogue prompts</strong> across the base game to completely eliminate forced subservience.</p>
+
+        <h2 id="catalog">🗂️ Archetype Catalog</h2>
+        <p>Below is the current list of available dialogue overhaul packages in the Unbowed series:</p>
+
+        <div class="callout callout-info">
+            <strong>ℹ️ Before download:</strong> 
+            The dialogue in this series was rewritten with the <strong>Google Gemini API</strong>. <a href="#transparency">Read the full disclosure</a>.
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Race / Focus</th>
+                    <th>Alignment</th>
+                    <th>Status</th>
+                    <th>Version</th>
+                    <th>Download Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Unbowed I: Blood Rite Fanatic</strong></td>
+                    <td>Dunmer</td>
+                    <td>Chaotic Evil</td>
+                    <td><span class="badge badge-released">Released</span></td>
+                    <td>v1.2</td>
+                    <td><a href="TU_ENLACE_DE_GOOGLE_DRIVE" target="_blank">Google Drive ↗</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Unbowed II: Resolved Dragonborn</strong></td>
+                    <td>All races</td>
+                    <td>Lawful Neutral</td>
+                    <td><span class="badge badge-released">Released</span></td>
+                    <td>v1.2</td>
+                    <td><a href="TU_ENLACE_DE_GOOGLE_DRIVE" target="_blank">Google Drive ↗</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Unbowed III: Highborn Hegemon</strong></td>
+                    <td>Altmer</td>
+                    <td>Lawful Evil</td>
+                    <td><span class="badge badge-soon">DEC 2026</span></td>
+                    <td><em>N/A</em></td>
+                    <td><em>N/A</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Unbowed IV: Shadowscale</strong></td>
+                    <td>Argonian</td>
+                    <td>Neutral Evil</td>
+                    <td><span class="badge badge-soon">Q1 2027</span></td>
+                    <td><em>N/A</em></td>
+                    <td><em>N/A</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Unbowed V: Monsterhunter</strong></td>
+                    <td>All races</td>
+                    <td>True Neutral</td>
+                    <td><span class="badge badge-soon">Q2 2027</span></td>
+                    <td><em>N/A</em></td>
+                    <td><em>N/A</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PAQUETES DENTRO DE RECUADROS GRISES -->
+        <div class="package-card" id="fanatic">
+            <h3>Unbowed I: Blood Rite Fanatic</h3>
+            <p>TBA</p>
+            <details>
+                <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
+                <table style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>📜 Bethesda (original)</th>
+                            <th>🤖 AI-generated</th>
+                            <th>✍️ Human-made</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Original vanilla dialogue text (the source of every rewrite)</td>
+                            <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
+                            <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>xEdit error auditing and manual corrections during playthroughs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </details>
+        </div>
+
+        <div class="package-card" id="credits">
+            <h3>Unbowed II: Dragonborn Resolved</h3>
+            <p>TBA</p>
+            <details>
+                <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
+                <table style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>📜 Bethesda (original)</th>
+                            <th>🤖 AI-generated</th>
+                            <th>✍️ Human-made</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Original vanilla dialogue text (the source of every rewrite)</td>
+                            <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
+                            <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>XML ↔ CSV conversion script for the Unbound module patch (adapted with Claude)</td>
+                            <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, and Update</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>xEdit error auditing and manual corrections during playthroughs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </details>
+        </div>
+
+
+        <h2 id="requirements">⚙️ Requirements</h2>
+
+        <div class="callout callout-warning">
+            <strong>⚠️ Load Order Note:</strong> Place plugin files after any general dialogue overhaul mods in your load order to avoid topic overrides.
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Mod name</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Skyrim Unbound</strong></td>
+                    <td>(Optional/Patched)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="installation">🛠️ Installation Guide</h2>
+
+        <div class="callout callout-danger">
+            <strong>🚫 Mod Manager Requirement:</strong> 
+            Unbowed is <strong>NOT compatible with Vortex</strong> or any Nexus-derived mod management software. 
+            You <strong>must use Mod Organizer 2 (MO2)</strong> to install and deploy this mod family correctly.
+        </div>
+
+        <ol>
+            <li>Download the desired archetype package (<code>.7z</code>) from the catalog table above.</li>
+            <li>Install the archive directly into <strong>Mod Organizer 2 (MO2)</strong> and activate it in your mod list.</li>
+            <li>Place the ESPFE plugin low in your load order to ensure dialogue overrides take absolute priority.</li>
+        </ol>
+
+        <h2 id="transparency">⚙️ AI Usage Disclosure & Transparency</h2>
+        <p>In the interest of full technical transparency regarding community standards and mod development pipelines, the creation process behind the Unbowed series is structured as follows:</p>
+
+        <ul>
+            <li>
+                <strong>Dialogue (AI-generated):</strong> The dialogue text was rewritten in batches
+                using the Google Gemini API. To set the style, I rewrote 100 main quest lines by hand
+                in the archetype's voice and wrote a character guide (about four pages) describing how
+                the character reacts in different situations; the AI worked from those. Given the scale
+                (9,024 lines), writing it all by hand was not feasible. Lines are not individually
+                reviewed before release; I correct them manually as I find issues during playthroughs.
+                See <a href="#updates">Update Policy</a> for how corrections are released.
+            </li>
+            <li>
+                <strong>Everything else (authored by me):</strong> Record mapping, string compilation,
+                ESPFE flagging, and xEdit error auditing, done with custom Python scripts, SSEEdit,
+                and xTranslator.
+            </li>
+        </ul>
+
+        <h2 id="usage-copyright">📜 Usage & Copyright Policy</h2>
+        <p>Please read the following permissions and restrictions carefully before downloading or utilizing any assets from the Unbowed series:</p>
+        <ul>
+            <li>
+                <strong>Derivative Works & Redistribution:</strong> 
+                Creating derivative works, modifying, repackaging, or re-uploading any files, assets, or dialogue scripts from this project to <strong>Nexus Mods or any other platform is strictly prohibited</strong>.
+            </li>
+            <li>
+                <strong>Distribution Channel:</strong> 
+                Official packages and updates are hosted exclusively through the links provided on this wiki.
+            </li>
+        </ul>
+
+    </main>
+
+</body>
+</html>
