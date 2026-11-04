@@ -145,6 +145,45 @@
             margin-bottom: 0;
         }
 
+/* --- TARJETAS CON CHIBI A LA IZQUIERDA --- */
+        .package-card {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .package-card .chibi-container {
+            flex-shrink: 0;
+            width: 140px; /* Ajusta el ancho deseado para el chibi */
+            text-align: center;
+        }
+        .package-card .chibi-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .package-card .card-content {
+            flex-grow: 1;
+            min-width: 0; /* Previene desbordamiento en tablas */
+        }
+        /* Ajuste responsive para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .package-card {
+                flex-direction: column;
+                align-items: center;
+            }
+            .package-card .chibi-container {
+                width: 120px;
+                margin-bottom: 12px;
+            }
+        }
+
+
         /* --- BADGES & STATUS --- */
         .badge {
             display: inline-block;
@@ -337,42 +376,50 @@
 
         <!-- PAQUETES DENTRO DE RECUADROS GRISES -->
         <div class="package-card" id="fanatic">
-            <h3>Unbowed I: Blood Rite Fanatic</h3>
-            <p>A cold, predatory, and lethal dialogue overhaul that strips away all forced servility. Tailored for a ruthless Dunmer who despises weakness, this module replaces passive pleadings with venomous, arrogant, and blunt demands—treating Skyrim’s inhabitants not as patrons to serve, but as weaklings to exploit, plunder, or destroy.</p>
-            <details>
-                <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
-                <table style="margin-top: 15px;">
-                    <thead>
-                        <tr>
-                            <th>📜 Bethesda (original)</th>
-                            <th>🤖 AI-generated</th>
-                            <th>✍️ Human-made</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Original vanilla dialogue text (the source of every rewrite)</td>
-                            <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
-                            <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>xEdit error auditing and manual corrections during playthroughs</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </details>
+            <!-- Columna Izquierda: Chibi -->
+            <div class="chibi-container">
+                <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DUNMER.png" alt="Unbowed I Dunmer Chibi">
+            </div>
+            <!-- Columna Derecha: Contenido -->
+            <div class="card-content">
+                <h3 style="margin-top: 0;">Unbowed I: Blood Rite Fanatic</h3>
+                <p>A cold, predatory, and lethal dialogue overhaul that strips away all forced servility. Tailored for a ruthless Dunmer who despises weakness, this module replaces passive pleadings with venomous, arrogant, and blunt demands—treating Skyrim’s inhabitants not as patrons to serve, but as weaklings to exploit, plunder, or destroy.</p>
+                
+                <details>
+                    <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
+                    <table style="margin-top: 15px;">
+                        <thead>
+                            <tr>
+                                <th>📜 Bethesda (original)</th>
+                                <th>🤖 AI-generated</th>
+                                <th>✍️ Human-made</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Original vanilla dialogue text (the source of every rewrite)</td>
+                                <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
+                                <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>xEdit error auditing and manual corrections during playthroughs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </details>
+            </div>
         </div>
 
         <div class="package-card" id="credits">
