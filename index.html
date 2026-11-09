@@ -269,57 +269,19 @@
             color: #c9d1d9;
         }
 
-/* --- ENVOLTORIO GENERAL --- */
-.package-card-wrapper {
-    background-color: var(--bg-alt);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    margin-bottom: 24px;
-    overflow: hidden; /* Mantiene los bordes redondeados limpios */
-}
-
-/* --- DIV 1: MAIN CONTENT (Imagen + Texto) --- */
-.package-card-main {
-    padding: 20px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-.package-card-main h3 {
-    margin-top: 0;
-}
-.package-card-main p:last-child {
-    margin-bottom: 0;
-}
-.package-card-main .chibi-container {
-    flex-shrink: 0;
-    width: 140px;
-    text-align: center;
-}
-.package-card-main .chibi-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-.package-card-main .card-content {
-    flex-grow: 1;
-    min-width: 0;
-}
-
-/* --- DIV 2: CONTENEDOR DE ACORDEONES (Tono diferenciado) --- */
+/* --- DIV 2: CONTENEDOR DE ACORDEONES (Full Width) --- */
 .package-card-accordions {
     background-color: #0d1117; /* Fondo más oscuro para contraste visual claro */
     border-top: 1px solid var(--border-color);
-    padding: 12px 20px;
+    padding: 0; /* SE CAMBIÓ A 0: permite que la tabla llegue hasta los bordes del div */
 }
 
 /* --- ESTILOS DE CADA ACORDEÓN --- */
 .accordion-item {
-    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
 }
 .accordion-item:last-child {
-    margin-bottom: 0;
+    border-bottom: none;
 }
 
 .accordion-item summary {
@@ -327,7 +289,7 @@
     font-weight: 600;
     font-size: 13px;
     color: var(--text-muted);
-    padding: 6px 0;
+    padding: 12px 20px; /* El padding se le da aquí para que solo el texto del título respire */
     transition: color 0.15s ease;
     user-select: none;
 }
@@ -337,11 +299,12 @@
 }
 
 .accordion-item[open] summary {
-    color: var(--link-color); /* Resalta cuando el acordeón está abierto */
+    color: var(--link-color);
+    border-bottom: 1px solid var(--border-color); /* Separador sutil al abrir */
 }
 
 .accordion-content {
-    padding: 10px 0 6px 0;
+    padding: 0; /* Sin espacio interno para que la tabla llene el 100% del borde */
 }
 
 /* Tablas y Listas internas de Acordeón */
@@ -350,10 +313,11 @@
     margin-bottom: 0;
     font-size: 13px;
     border-collapse: collapse;
+    border-style: hidden; /* Elimina el borde exterior duplicado que choca con la tarjeta */
 }
 .credits-table th, 
 .credits-table td {
-    padding: 8px 12px;
+    padding: 10px 16px; /* Mantiene el padding dentro de cada celda de texto */
     border: 1px solid var(--border-color);
     vertical-align: top;
 }
@@ -365,7 +329,7 @@
 }
 .credits-list, .changelog-list {
     margin-bottom: 0;
-    padding-left: 18px;
+    padding: 12px 20px 12px 38px; /* Si metes listas fuera de tabla dentro del acordeón */
     font-size: 13px;
 }
 .credits-list li, .changelog-list li {
