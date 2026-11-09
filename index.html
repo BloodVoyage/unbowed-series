@@ -625,100 +625,152 @@
         </div>
         <!-- Unbowed I -->
         
-
-        <div class="package-card" id="unbowedII">
-            <!-- Columna Izquierda: Chibi -->
-            <div class="chibi-container">
-                <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DRAGONBORN.png" alt="Unbowed I Dunmer Chibi">
+<!-- Unbowed II -->
+        <div class="package-card-wrapper" id="unbowedII">
+        
+            <!-- DIV 1: Imagen + Descripción -->
+            <div class="package-card-main">
+                <div class="chibi-container">
+                    <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DRAGONBORN.png" alt="Unbowed II Dragonborn Chibi">
+                </div>
+                <div class="card-content">
+                    <h3>Unbowed II: Dragonborn Dialogue Overhaul</h3>
+                    <p>An authoritative, stoic, and resolute dialogue overhaul that replaces passive subservience with dignified command. Tailored for a battle-hardened Dragonborn who carries an unyielding sense of duty, this module replaces needy pleadings with quiet, formidable gravitas—treating Skyrim’s populace not as superiors to appease, but as citizens to protect, direct, or decisively discipline.</p>
+                </div>
             </div>
-            <!-- Columna Derecha: Contenido -->
-            <div class="card-content">
-                <h3 style="margin-top: 0;">Unbowed II: Dragonborn Dialogue Overhaul</h3>
-                <p>An authoritative, stoic, and resolute dialogue overhaul that replaces passive subservience with dignified command. Tailored for a battle-hardened Dragonborn who carries an unyielding sense of duty, this module replaces needy pleadings with quiet, formidable gravitas—treating Skyrim’s populace not as superiors to appease, but as citizens to protect, direct, or decisively discipline.</p>
+        
+            <!-- DIV 2: Área de Acordeones -->
+            <div class="package-card-accordions">
                 
-                <details>
-                    <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
-                    <table style="margin-top: 15px;">
-                        <thead>
-                            <tr>
-                                <th>📜 Bethesda</th>
-                                <th>🤖 AI-generated</th>
-                                <th>✍️ Human-made</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Original vanilla dialogue text (the source of every rewrite)</td>
-                                <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
-                                <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>xEdit error auditing and manual corrections during playthroughs</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Acordeón 1: Créditos -->
+                <details class="accordion-item">
+                    <summary><strong>CREDITS: Who made what</strong></summary>
+                    <div class="accordion-content">
+                        <table class="credits-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Category</th>
+                                    <th>Contribution Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>📜 Bethesda</strong></td>
+                                    <td>Original vanilla dialogue text (the source material of every rewrite across base game and DLCs).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🤖 AI-generated</strong></td>
+                                    <td>Final text of the <strong>9,024</strong> dialogue lines generated in automated batches via Google Gemini API and reinserted into XML string databases.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>✍️ Human-made</strong></td>
+                                    <td>
+                                        <ul class="credits-list">
+                                            <li>Character design, archetype identity, style direction, and custom Python API integration pipeline.</li>
+                                            <li>Batch-processing and text conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update, and Unbound patch.</li>
+                                            <li>Record mapping, string compilation, ESPFE plugin flagging, and modular FOMod installer packaging.</li>
+                                            <li>xEdit syntax error auditing and manual edge-case corrections during active playtests.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </details>
+        
+                <!-- Acordeón 2: Changelog -->
+                <details class="accordion-item">
+                    <summary><strong>CHANGELOG</strong></summary>
+                    <div class="accordion-content">
+                        <ul class="changelog-list">
+                            <li><strong>v1.2:</strong><br>
+                                > Expanded total coverage to 9,024 dialogue lines across the base game and all official DLCs (Dawnguard, Dragonborn, Hearthfire).<br>
+                                > Added 89 additional rewritten dialogue lines specifically tailored for Skyrim Unbound Reborn.<br>
+                                > Optimized plugin architecture: USSEP overrides are now natively integrated into the primary ESL, removing the need for a separate patch plugin.<br>
+                                > Audited and refined 100 dialogue lines for better tonal consistency and formatting accuracy.</li>
+                            <li><strong>v1.1:</strong><br>
+                                > Initial release overhauling 5,171 base game player dialogue prompts from Skyrim.esm .</li>
+                        </ul>
+                    </div>
+                </details>
+        
             </div>
         </div>
+        <!-- Unbowed II -->
 
-        <div class="package-card" id="unbowedIII">
-            <!-- Columna Izquierda: Chibi -->
-            <div class="chibi-container">
-                <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/THALMOR.png" alt="Unbowed I Dunmer Chibi">
+
+        <!-- Unbowed III -->
+        <div class="package-card-wrapper" id="unbowedIII">
+        
+            <!-- DIV 1: Imagen + Descripción -->
+            <div class="package-card-main">
+                <div class="chibi-container">
+                    <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/THALMOR.png" alt="Unbowed III Altmer Chibi">
+                </div>
+                <div class="card-content">
+                    <h3>Unbowed III: Altmer Dialogue Overhaul</h3>
+                    <p>Thalmor agent?</p>
+                </div>
             </div>
-            <!-- Columna Derecha: Contenido -->
-            <div class="card-content">
-                <h3 style="margin-top: 0;">Unbowed III: Atlmer Dialogue Overhaul</h3>
-                <p>Thalmor agent?</p>
+        
+            <!-- DIV 2: Área de Acordeones -->
+            <div class="package-card-accordions">
                 
-                <details>
-                    <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
-                    <table style="margin-top: 15px;">
-                        <thead>
-                            <tr>
-                                <th>📜 Bethesda</th>
-                                <th>🤖 AI-generated</th>
-                                <th>✍️ Human-made</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Original vanilla dialogue text (the source of every rewrite)</td>
-                                <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
-                                <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>xEdit error auditing and manual corrections during playthroughs</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Acordeón 1: Créditos -->
+                <details class="accordion-item">
+                    <summary><strong>CREDITS: Who made what</strong></summary>
+                    <div class="accordion-content">
+                        <table class="credits-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Category</th>
+                                    <th>Contribution Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>📜 Bethesda</strong></td>
+                                    <td>Original vanilla dialogue text (the source material of every rewrite across base game and DLCs).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🤖 AI-generated</strong></td>
+                                    <td>Final text of the <strong>9,024</strong> dialogue lines generated in automated batches via Google Gemini API and reinserted into XML string databases.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>✍️ Human-made</strong></td>
+                                    <td>
+                                        <ul class="credits-list">
+                                            <li>Character design, archetype identity, style direction, and custom Python API integration pipeline.</li>
+                                            <li>Batch-processing and text conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update, and Unbound patch.</li>
+                                            <li>Record mapping, string compilation, ESPFE plugin flagging, and modular FOMod installer packaging.</li>
+                                            <li>xEdit syntax error auditing and manual edge-case corrections during active playtests.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </details>
+        
+                <!-- Acordeón 2: Changelog -->
+                <details class="accordion-item">
+                    <summary><strong>CHANGELOG</strong></summary>
+                    <div class="accordion-content">
+                        <ul class="changelog-list">
+                            <li><strong>v1.2:</strong><br>
+                                > Expanded total coverage to 9,024 dialogue lines across the base game and all official DLCs (Dawnguard, Dragonborn, Hearthfire).<br>
+                                > Added 89 additional rewritten dialogue lines specifically tailored for Skyrim Unbound Reborn.<br>
+                                > Optimized plugin architecture: USSEP overrides are now natively integrated into the primary ESL, removing the need for a separate patch plugin.<br>
+                                > Audited and refined 100 dialogue lines for better tonal consistency and formatting accuracy.</li>
+                            <li><strong>v1.1:</strong><br>
+                                > Initial release overhauling 5,171 base game player dialogue prompts from Skyrim.esm .</li>
+                        </ul>
+                    </div>
+                </details>
+        
             </div>
         </div>
+        <!-- Unbowed III -->
 
 
         <h2 id="requirements">⚙️ Requirements</h2>
