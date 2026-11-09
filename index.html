@@ -269,6 +269,64 @@
             color: #c9d1d9;
         }
 
+/* --- ACCORDION & CREDITS TABLE --- */
+details.credits-box {
+    margin-top: 16px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
+
+details.credits-box summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+    user-select: none;
+}
+
+details.credits-box summary:hover {
+    color: var(--text-heading);
+}
+
+.credits-table {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 13px;
+    border-collapse: collapse;
+}
+
+.credits-table th, 
+.credits-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.credits-table th {
+    background-color: var(--bg-hover);
+    color: var(--text-heading);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.credits-list {
+    margin-bottom: 0;
+    padding-left: 18px;
+}
+
+.credits-list li {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.credits-list li:last-child {
+    margin-bottom: 0;
+}
+
+        
         /* --- 9. TABLAS --- */
         table {
             width: 100%;
