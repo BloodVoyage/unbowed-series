@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unbowed Wiki by BloodVoyage</title>
     <style>
+        /* --- 1. VARIABLES GLOBALES --- */
+        :root {
+            --bg-main: #ffffff;
+            --bg-alt: #f6f8fa;
+            --bg-table-even: #fafbfc;
+            
+            --border-color: #e1e4e8;
+            --text-color: #24292e;
+            --text-heading: #1a1a1a;
+            --text-muted: #6a737d;
+            --link-color: #0366d6;
+
+            --sidebar-width: 260px;
+
+            /* Badges */
+            --badge-released-bg: #dafbe1;
+            --badge-released-text: #1a7f37;
+            --badge-soon-bg: #fff8c5;
+            --badge-soon-text: #9a6700;
+            --badge-private-bg: #999999;
+            --badge-private-text: #333333;
+        }
+
+        /* --- 2. RESET Y BASE --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,16 +40,69 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
-            background-color: #ffffff;
-            color: #1a1a1a;
+            background-color: var(--bg-main);
+            color: var(--text-heading);
             min-height: 100vh;
         }
+        p {
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            line-height: 1.6;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 28px 0;
+        }
+        code {
+            background-color: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 85%;
+        }
 
-        /* --- SIDEBAR --- */
+        /* --- 3. ENCABEZADOS --- */
+        h1 {
+            font-size: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* --- 4. SIDEBAR --- */
         .sidebar {
-            width: 260px;
-            background-color: #f6f8fa;
-            border-right: 1px solid #e1e4e8;
+            width: var(--sidebar-width);
+            background-color: var(--bg-alt);
+            border-right: 1px solid var(--border-color);
             padding: 24px 16px;
             position: fixed;
             top: 0;
@@ -45,110 +122,45 @@
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
-            color: #6a737d;
+            color: var(--text-muted);
             margin-top: 20px;
             margin-bottom: 8px;
             letter-spacing: 0.5px;
         }
         .sidebar ul {
             list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
         }
         .sidebar li {
             margin-bottom: 4px;
         }
         .sidebar a {
-            color: #24292e;
-            text-decoration: none;
+            color: var(--text-color);
             font-size: 14px;
             display: block;
             padding: 6px 10px;
             border-radius: 6px;
             transition: background-color 0.15s ease;
         }
-        .sidebar a:hover, .sidebar a.active {
-            background-color: #e1e4e8;
+        .sidebar a:hover, 
+        .sidebar a.active {
+            background-color: var(--border-color);
             font-weight: 600;
         }
 
-        /* --- MAIN CONTENT --- */
+        /* --- 5. MAIN CONTENT --- */
         .main-content {
-            margin-left: 260px;
+            margin-left: var(--sidebar-width);
             padding: 40px 60px;
             max-width: 960px;
             width: 100%;
         }
-        h1 {
-            font-size: 32px;
-            border-bottom: 1px solid #e1e4e8;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 22px;
-            margin-top: 36px;
-            margin-bottom: 14px;
-            border-bottom: 1px solid #e1e4e8;
-            padding-bottom: 6px;
-        }
-        h3 {
-            font-size: 18px;
-            margin-top: 24px;
-            margin-bottom: 10px;
-        }
-        p {
-            line-height: 1.6;
-            margin-bottom: 16px;
-            color: #24292e;
-        }
-        ul, ol {
-            margin-bottom: 16px;
-            padding-left: 24px;
-            line-height: 1.6;
-        }
-        li {
-            margin-bottom: 6px;
-        }
-        hr {
-            border: 0;
-            border-top: 1px solid #e1e4e8;
-            margin: 28px 0;
-        }
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        code {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 85%;
-        }
 
-        /* --- PACKAGE CARDS (GRANULAR GRAY BOXES) --- */
+        /* --- 6. PACKAGE CARDS (CON CHIBI) --- */
         .package-card {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .package-card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .package-card p:last-child {
-            margin-bottom: 0;
-        }
-
-/* --- TARJETAS CON CHIBI A LA IZQUIERDA --- */
-        .package-card {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
+            background-color: var(--bg-alt);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 20px;
             margin-bottom: 20px;
@@ -156,9 +168,15 @@
             gap: 20px;
             align-items: flex-start;
         }
+        .package-card h3 {
+            margin-top: 0;
+        }
+        .package-card p:last-child {
+            margin-bottom: 0;
+        }
         .package-card .chibi-container {
             flex-shrink: 0;
-            width: 140px; /* Ajusta el ancho deseado para el chibi */
+            width: 140px;
             text-align: center;
         }
         .package-card .chibi-container img {
@@ -169,22 +187,10 @@
         }
         .package-card .card-content {
             flex-grow: 1;
-            min-width: 0; /* Previene desbordamiento en tablas */
-        }
-        /* Ajuste responsive para pantallas pequeñas */
-        @media (max-width: 600px) {
-            .package-card {
-                flex-direction: column;
-                align-items: center;
-            }
-            .package-card .chibi-container {
-                width: 120px;
-                margin-bottom: 12px;
-            }
+            min-width: 0;
         }
 
-
-        /* --- BADGES & STATUS --- */
+        /* --- 7. BADGES & STATUS --- */
         .badge {
             display: inline-block;
             padding: 2px 8px;
@@ -194,19 +200,19 @@
             text-transform: uppercase;
         }
         .badge-released {
-            background-color: #dafbe1;
-            color: #1a7f37;
+            background-color: var(--badge-released-bg);
+            color: var(--badge-released-text);
         }
         .badge-soon {
-            background-color: #fff8c5;
-            color: #9a6700;
+            background-color: var(--badge-soon-bg);
+            color: var(--badge-soon-text);
         }
         .badge-private {
-            background-color: #999999;
-            color: #333333;
-        }        
+            background-color: var(--badge-private-bg);
+            color: var(--badge-private-text);
+        }
 
-        /* --- CALLOUT BOXES --- */
+        /* --- 8. CALLOUT BOXES --- */
         .callout {
             padding: 14px 18px;
             border-left: 4px solid;
@@ -214,6 +220,9 @@
             margin-bottom: 20px;
             font-size: 14px;
             line-height: 1.5;
+        }
+        .callout p {
+            margin-bottom: 0;
         }
         .callout-info {
             background-color: #f0f4f8;
@@ -237,12 +246,8 @@
             border-color: #ff8182;
             color: #cf222e;
         }
-        .callout p {
-            margin-bottom: 0;
-            color: inherit;
-        }
 
-        /* --- TABLES --- */
+        /* --- 9. TABLAS --- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -251,18 +256,18 @@
         }
         th, td {
             padding: 10px 12px;
-            border: 1px solid #e1e4e8;
+            border: 1px solid var(--border-color);
             text-align: left;
         }
         th {
-            background-color: #f6f8fa;
+            background-color: var(--bg-alt);
             font-weight: 600;
         }
         tr:nth-child(even) {
-            background-color: #fafbfc;
+            background-color: var(--bg-table-even);
         }
 
-        /* --- RESPONSIVE FOR MOBILE --- */
+        /* --- 10. RESPONSIVE --- */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -271,11 +276,19 @@
                 position: relative;
                 width: 100%;
                 border-right: none;
-                border-bottom: 1px solid #e1e4e8;
+                border-bottom: 1px solid var(--border-color);
             }
             .main-content {
                 margin-left: 0;
                 padding: 24px 20px;
+            }
+            .package-card {
+                flex-direction: column;
+                align-items: center;
+            }
+            .package-card .chibi-container {
+                width: 120px;
+                margin-bottom: 12px;
             }
         }
     </style>
