@@ -269,61 +269,108 @@
             color: #c9d1d9;
         }
 
-/* --- ACCORDION & CREDITS TABLE --- */
-details.credits-box {
-    margin-top: 16px;
-    border-top: 1px solid var(--border-color);
-    padding-top: 12px;
+/* --- ENVOLTORIO GENERAL --- */
+.package-card-wrapper {
+    background-color: var(--bg-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    overflow: hidden; /* Mantiene los bordes redondeados limpios */
 }
 
-details.credits-box summary {
+/* --- DIV 1: MAIN CONTENT (Imagen + Texto) --- */
+.package-card-main {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.package-card-main h3 {
+    margin-top: 0;
+}
+.package-card-main p:last-child {
+    margin-bottom: 0;
+}
+.package-card-main .chibi-container {
+    flex-shrink: 0;
+    width: 140px;
+    text-align: center;
+}
+.package-card-main .chibi-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+.package-card-main .card-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* --- DIV 2: CONTENEDOR DE ACORDEONES (Tono diferenciado) --- */
+.package-card-accordions {
+    background-color: #0d1117; /* Fondo más oscuro para contraste visual claro */
+    border-top: 1px solid var(--border-color);
+    padding: 12px 20px;
+}
+
+/* --- ESTILOS DE CADA ACORDEÓN --- */
+.accordion-item {
+    margin-bottom: 8px;
+}
+.accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+.accordion-item summary {
     cursor: pointer;
     font-weight: 600;
     font-size: 13px;
     color: var(--text-muted);
+    padding: 6px 0;
     transition: color 0.15s ease;
     user-select: none;
 }
 
-details.credits-box summary:hover {
+.accordion-item summary:hover {
     color: var(--text-heading);
 }
 
+.accordion-item[open] summary {
+    color: var(--link-color); /* Resalta cuando el acordeón está abierto */
+}
+
+.accordion-content {
+    padding: 10px 0 6px 0;
+}
+
+/* Tablas y Listas internas de Acordeón */
 .credits-table {
     width: 100%;
-    margin-top: 12px;
     margin-bottom: 0;
     font-size: 13px;
     border-collapse: collapse;
 }
-
 .credits-table th, 
 .credits-table td {
-    padding: 10px 12px;
+    padding: 8px 12px;
     border: 1px solid var(--border-color);
     vertical-align: top;
 }
-
 .credits-table th {
     background-color: var(--bg-hover);
     color: var(--text-heading);
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
-
-.credits-list {
+.credits-list, .changelog-list {
     margin-bottom: 0;
     padding-left: 18px;
+    font-size: 13px;
 }
-
-.credits-list li {
+.credits-list li, .changelog-list li {
     margin-bottom: 4px;
     line-height: 1.4;
-}
-
-.credits-list li:last-child {
-    margin-bottom: 0;
 }
 
         
@@ -488,53 +535,75 @@ details.credits-box summary:hover {
             </tbody>
         </table>
 
-        <!-- PAQUETES DENTRO DE RECUADROS GRISES -->
-        <div class="package-card" id="unbowedI">
-            <!-- Bloque Superior: Chibi + Descripción -->
-            <div class="chibi-container">
-                <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DUNMER.png" alt="Unbowed I Dunmer Chibi">
+        
+        <!-- CONTENEDOR GENERAL DE LA TARJETA -->
+        <div class="package-card-wrapper" id="unbowedI">
+        
+            <!-- DIV 1: Imagen + Descripción -->
+            <div class="package-card-main">
+                <div class="chibi-container">
+                    <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DUNMER.png" alt="Unbowed I Dunmer Chibi">
+                </div>
+                <div class="card-content">
+                    <h3>Unbowed I: Dunmer Dialogue Overhaul</h3>
+                    <p>A cold, predatory, and lethal dialogue overhaul that strips away all forced servility. Tailored for a ruthless Dunmer who despises weakness, this module replaces passive pleadings with venomous, arrogant, and blunt demands—treating Skyrim’s inhabitants not as patrons to serve, but as weaklings to exploit, plunder, or destroy.</p>
+                </div>
             </div>
-            
-            <div class="card-content">
-                <h3>Unbowed I: Dunmer Dialogue Overhaul</h3>
-                <p>A cold, predatory, and lethal dialogue overhaul that strips away all forced servility. Tailored for a ruthless Dunmer who despises weakness, this module replaces passive pleadings with venomous, arrogant, and blunt demands—treating Skyrim’s inhabitants not as patrons to serve, but as weaklings to exploit, plunder, or destroy.</p>
+        
+            <!-- DIV 2: Área de Acordeones (Background diferenciado) -->
+            <div class="package-card-accordions">
                 
-                <!-- Bloque Inferior: Acordeón con Tabla Vertical de Créditos -->
-                <details class="credits-box">
-                    <summary>CREDITS: Who made what</summary>
-                    
-                    <table class="credits-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;">Category</th>
-                                <th>Contribution Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>📜 Bethesda</strong></td>
-                                <td>Original vanilla dialogue text (the source material of every rewrite across base game and DLCs).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>🤖 AI-generated</strong></td>
-                                <td>Final text of the <strong>9,024</strong> dialogue lines generated in automated batches via Google Gemini API and reinserted into XML string databases.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>✍️ Human-made</strong></td>
-                                <td>
-                                    <ul class="credits-list">
-                                        <li>Character design, archetype identity, style direction, and custom Python API integration pipeline.</li>
-                                        <li>Batch-processing and text conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update, and Unbound patch.</li>
-                                        <li>Record mapping, string compilation, ESPFE plugin flagging, and modular FOMod installer packaging.</li>
-                                        <li>xEdit syntax error auditing and manual edge-case corrections during active playtests.</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Acordeón 1: Créditos -->
+                <details class="accordion-item">
+                    <summary>▶ CREDITS: Who made what</summary>
+                    <div class="accordion-content">
+                        <table class="credits-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Category</th>
+                                    <th>Contribution Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>📜 Bethesda</strong></td>
+                                    <td>Original vanilla dialogue text (the source material of every rewrite across base game and DLCs).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🤖 AI-generated</strong></td>
+                                    <td>Final text of the <strong>9,024</strong> dialogue lines generated in automated batches via Google Gemini API and reinserted into XML string databases.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>✍️ Human-made</strong></td>
+                                    <td>
+                                        <ul class="credits-list">
+                                            <li>Character design, archetype identity, style direction, and custom Python API integration pipeline.</li>
+                                            <li>Batch-processing and text conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update, and Unbound patch.</li>
+                                            <li>Record mapping, string compilation, ESPFE plugin flagging, and modular FOMod installer packaging.</li>
+                                            <li>xEdit syntax error auditing and manual edge-case corrections during active playtests.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </details>
+        
+                <!-- Acordeón 2: Changelog -->
+                <details class="accordion-item">
+                    <summary>▶ CHANGELOG</summary>
+                    <div class="accordion-content">
+                        <ul class="changelog-list">
+                            <li><strong>v1.2:</strong> Full compatibility update with latest game versions; standardized prompt edge cases and fixed minor context typos.</li>
+                            <li><strong>v1.1:</strong> Added full DLC coverage (Dawnguard, Dragonborn, HearthFires) and created Skyrim Unbound compatibility patch.</li>
+                            <li><strong>v1.0:</strong> Initial release overhauling 9,024 base game player dialogue prompts.</li>
+                        </ul>
+                    </div>
+                </details>
+        
             </div>
         </div>
+        
 
         <div class="package-card" id="unbowedII">
             <!-- Columna Izquierda: Chibi -->
