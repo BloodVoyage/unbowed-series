@@ -432,45 +432,45 @@
 
         <!-- PAQUETES DENTRO DE RECUADROS GRISES -->
         <div class="package-card" id="unbowedI">
-            <!-- Columna Izquierda: Chibi -->
+            <!-- Bloque Superior: Chibi + Descripción -->
             <div class="chibi-container">
                 <img src="https://raw.githubusercontent.com/BloodVoyage/unbowed-series/main/DUNMER.png" alt="Unbowed I Dunmer Chibi">
             </div>
-            <!-- Columna Derecha: Contenido -->
+            
             <div class="card-content">
-                <h3 style="margin-top: 0;">Unbowed I: Dunmer Dialogue Overhaul</h3>
+                <h3>Unbowed I: Dunmer Dialogue Overhaul</h3>
                 <p>A cold, predatory, and lethal dialogue overhaul that strips away all forced servility. Tailored for a ruthless Dunmer who despises weakness, this module replaces passive pleadings with venomous, arrogant, and blunt demands—treating Skyrim’s inhabitants not as patrons to serve, but as weaklings to exploit, plunder, or destroy.</p>
                 
-                <details>
-                    <summary style="cursor: pointer; font-weight: bold; font-size: 0.8em;">CREDITS: Who made what</summary>
-                    <table style="margin-top: 15px;">
+                <!-- Bloque Inferior: Acordeón con Tabla Vertical de Créditos -->
+                <details class="credits-box">
+                    <summary>CREDITS: Who made what</summary>
+                    
+                    <table class="credits-table">
                         <thead>
                             <tr>
-                                <th>📜 Bethesda</th>
-                                <th>🤖 AI-generated</th>
-                                <th>✍️ Human-made</th>
+                                <th style="width: 25%;">Category</th>
+                                <th>Contribution Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Original vanilla dialogue text (the source of every rewrite)</td>
-                                <td>Final text of the <strong>9,024</strong> dialogue lines (Google Gemini API, in batches), reinserted into the XML files</td>
-                                <td>Character design, style direction, and Python code to interface with the Google Gemini API</td>
+                                <td><strong>📜 Bethesda</strong></td>
+                                <td>Original vanilla dialogue text (the source material of every rewrite across base game and DLCs).</td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Batch-processing and conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update and Unbound patch</td>
+                                <td><strong>🤖 AI-generated</strong></td>
+                                <td>Final text of the <strong>9,024</strong> dialogue lines generated in automated batches via Google Gemini API and reinserted into XML string databases.</td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Record mapping, string compilation, ESPFE flagging, FOMod packaging</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>xEdit error auditing and manual corrections during playthroughs</td>
+                                <td><strong>✍️ Human-made</strong></td>
+                                <td>
+                                    <ul class="credits-list">
+                                        <li>Character design, archetype identity, style direction, and custom Python API integration pipeline.</li>
+                                        <li>Batch-processing and text conversion scripts for Skyrim, Dawnguard, Dragonborn, HearthFires, Update, and Unbound patch.</li>
+                                        <li>Record mapping, string compilation, ESPFE plugin flagging, and modular FOMod installer packaging.</li>
+                                        <li>xEdit syntax error auditing and manual edge-case corrections during active playtests.</li>
+                                    </ul>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
