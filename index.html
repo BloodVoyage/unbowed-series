@@ -5,27 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unbowed Wiki by BloodVoyage</title>
     <style>
-        /* --- 1. VARIABLES GLOBALES --- */
+        /* --- 1. VARIABLES GLOBALES (DARK THEME & RED ACCENTS) --- */
         :root {
-            --bg-main: #ffffff;
-            --bg-alt: #f6f8fa;
-            --bg-table-even: #fafbfc;
+            /* Fondos estilo GitHub Dark / ModDB */
+            --bg-main: #0d1117;          /* Fondo base principal */
+            --bg-alt: #161b22;           /* Sidebar y tarjetas */
+            --bg-table-even: #1c2128;    /* Filas alternas de tabla */
+            --bg-hover: #21262d;        /* Hover en links de sidebar y filas */
             
-            --border-color: #e1e4e8;
-            --text-color: #24292e;
-            --text-heading: #1a1a1a;
-            --text-muted: #6a737d;
-            --link-color: #0366d6;
+            /* Bordes y Acentos */
+            --border-color: #30363d;
+            --accent-red: #da3633;        /* Rojo escarlata de la marca Unbowed */
+            --accent-red-hover: #ff4d4d;
+
+            /* Tipografía */
+            --text-heading: #f0f6fc;      /* Blanco hueso para títulos principales */
+            --text-color: #c9d1d9;        /* Gris claro para párrafos (alta legibilidad) */
+            --text-muted: #8b949e;       /* Texto secundario y títulos de sidebar */
+            --link-color: #ff5555;        /* Rojo para enlaces (o usa #58a6ff si prefieres azul) */
 
             --sidebar-width: 260px;
 
-            /* Badges */
-            --badge-released-bg: #dafbe1;
-            --badge-released-text: #1a7f37;
-            --badge-soon-bg: #fff8c5;
-            --badge-soon-text: #9a6700;
-            --badge-private-bg: #999999;
-            --badge-private-text: #333333;
+            /* Badges Adaptados al Modo Oscuro */
+            --badge-released-bg: #13231b;
+            --badge-released-text: #3fb950;
+            --badge-soon-bg: #2d2206;
+            --badge-soon-text: #d29922;
+            --badge-private-bg: #21262d;
+            --badge-private-text: #8b949e;
         }
 
         /* --- 2. RESET Y BASE --- */
@@ -41,7 +48,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             background-color: var(--bg-main);
-            color: var(--text-heading);
+            color: var(--text-color);
             min-height: 100vh;
         }
         p {
@@ -52,8 +59,10 @@
         a {
             color: var(--link-color);
             text-decoration: none;
+            transition: color 0.15s ease;
         }
         a:hover {
+            color: var(--accent-red-hover);
             text-decoration: underline;
         }
         ul, ol {
@@ -70,8 +79,9 @@
             margin: 28px 0;
         }
         code {
-            background-color: var(--bg-alt);
+            background-color: var(--bg-hover);
             border: 1px solid var(--border-color);
+            color: #ff7b72;
             padding: 2px 6px;
             border-radius: 4px;
             font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
@@ -81,19 +91,22 @@
         /* --- 3. ENCABEZADOS --- */
         h1 {
             font-size: 32px;
+            color: var(--text-heading);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
         h2 {
             font-size: 22px;
+            color: var(--text-heading);
             margin-top: 36px;
             margin-bottom: 14px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--accent-red); /* Detalle de línea roja estilo ModDB */
             padding-bottom: 6px;
         }
         h3 {
             font-size: 18px;
+            color: var(--text-heading);
             margin-top: 24px;
             margin-bottom: 10px;
         }
@@ -141,12 +154,18 @@
             display: block;
             padding: 6px 10px;
             border-radius: 6px;
-            transition: background-color 0.15s ease;
+            transition: all 0.15s ease;
         }
-        .sidebar a:hover, 
+        .sidebar a:hover {
+            background-color: var(--bg-hover);
+            color: var(--text-heading);
+            text-decoration: none;
+        }
         .sidebar a.active {
-            background-color: var(--border-color);
+            background-color: var(--bg-hover);
+            color: var(--text-heading);
             font-weight: 600;
+            border-left: 3px solid var(--accent-red);
         }
 
         /* --- 5. MAIN CONTENT --- */
@@ -202,14 +221,17 @@
         .badge-released {
             background-color: var(--badge-released-bg);
             color: var(--badge-released-text);
+            border: 1px solid rgba(63, 185, 80, 0.3);
         }
         .badge-soon {
             background-color: var(--badge-soon-bg);
             color: var(--badge-soon-text);
+            border: 1px solid rgba(210, 153, 34, 0.3);
         }
         .badge-private {
             background-color: var(--badge-private-bg);
             color: var(--badge-private-text);
+            border: 1px solid var(--border-color);
         }
 
         /* --- 8. CALLOUT BOXES --- */
@@ -220,31 +242,29 @@
             margin-bottom: 20px;
             font-size: 14px;
             line-height: 1.5;
+            background-color: var(--bg-alt);
         }
         .callout p {
             margin-bottom: 0;
         }
         .callout-info {
-            background-color: #f0f4f8;
-            border-color: #3b82f6;
-            color: #1e293b;
+            border-color: #388bfd;
+            background-color: #0d1d30;
+            color: #c9d1d9;
         }
         .callout-info a {
-            color: #2563eb;
+            color: #58a6ff;
             text-decoration: underline;
         }
-        .callout-info a:hover {
-            color: #1d4ed8;
-        }
         .callout-warning {
-            background-color: #fff8c5;
-            border-color: #d4a72c;
-            color: #7d4e00;
+            border-color: #bb8009;
+            background-color: #261c06;
+            color: #c9d1d9;
         }
         .callout-danger {
-            background-color: #ffebe9;
-            border-color: #ff8182;
-            color: #cf222e;
+            border-color: #f85149;
+            background-color: #271012;
+            color: #c9d1d9;
         }
 
         /* --- 9. TABLAS --- */
@@ -261,10 +281,14 @@
         }
         th {
             background-color: var(--bg-alt);
+            color: var(--text-heading);
             font-weight: 600;
         }
         tr:nth-child(even) {
             background-color: var(--bg-table-even);
+        }
+        tr:hover {
+            background-color: var(--bg-hover);
         }
 
         /* --- 10. RESPONSIVE --- */
